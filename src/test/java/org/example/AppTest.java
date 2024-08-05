@@ -1,4 +1,3 @@
-
 package org.example;
 
 import junit.framework.Test;
