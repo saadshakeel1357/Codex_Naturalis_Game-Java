@@ -75,7 +75,9 @@ public class GoldFront extends ResourceFront {
 
     protected String constructPrettyPrint() {
 
-        String middle = "|                         |\n";
+        String middle1 = "|                         |\n";
+        String middle2 = "|                         |\n";
+        String middle3 = "|                         |\n";
 
         String up1 = "";
         String up2 = "";
@@ -220,6 +222,18 @@ public class GoldFront extends ResourceFront {
 
         }
 
+        if(getVar1() == "empty" && getVar2() == "empty" && getVar3() == "empty" && getVar4() == "empty"){
+            up1 = "┌---┐-----------------┌---┐\n";
+            up2 = "|   |                 |   |\n";
+            up3 = "└---┘                 └---┘\n";
+            middle1 = "|          ┌---┐          |\n";
+            middle2 = "|          | " + makeCode(getKingdom()) + "|          |\n";
+            middle3 = "|          └---┘          |\n";
+            down1 = "┌---┐                 ┌---┐\n";
+            down2 = "|   |                 |   |\n";
+            down3 = "└---┘-----------------└---┘\n";
+
+        }
 
 
         return new StringBuilder()
@@ -227,9 +241,9 @@ public class GoldFront extends ResourceFront {
                 .append(up1)
                 .append(up2)
                 .append(up3)
-                .append(middle)
-                .append(middle)
-                .append(middle)
+                .append(middle1)
+                .append(middle2)
+                .append(middle3)
                 .append(down1)
                 .append(down2)
                 .append(down3)
@@ -240,6 +254,7 @@ public class GoldFront extends ResourceFront {
     public void prettyPrint() {
         System.out.print(constructPrettyPrint());
     }
+
 
 
     @Override

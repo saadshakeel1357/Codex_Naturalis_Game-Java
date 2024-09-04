@@ -22,4 +22,8 @@ public interface Cards {
     String getType();
 
     void prettyPrint();
+
+    String printBackFront(Cards card);
+
+    String getPrettyPrint();
 }

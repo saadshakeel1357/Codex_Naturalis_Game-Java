@@ -1,6 +1,5 @@
 package Cards;
 
-import java.util.Arrays;
 
 public class StarterFront extends ResourceFront{
 
@@ -93,14 +92,66 @@ public class StarterFront extends ResourceFront{
         System.out.print(constructPrettyPrint());
     }
 
+
+    public String getPrintBack(){
+
+        if( getVar1() == "empty" && getVar2() == "leaf" && getVar3() == "insect" && getVar4() == "empty"){
+            setVar1("mushroom");
+            setVar2("leaf");
+            setVar3("insect");
+            setVar4("animal");
+        }
+
+        if( getVar1() == "animal" && getVar2() == "empty" && getVar3() == "empty" && getVar4() == "mushroom"){
+            setVar1("leaf");
+            setVar2("animal");
+            setVar3("mushroom");
+            setVar4("insect");
+        }
+
+        if( getVar1() == "empty" && getVar2() == "empty" && getVar3() == "empty" && getVar4() == "empty"){
+            setVar1("insect");
+            setVar2("animal");
+            setVar3("mushroom");
+            setVar4("leaf");
+        }
+
+        if( getVar1() == "animal" && getVar2() == "empty" && getVar3() == "empty" && getVar4() == "mushroom"){
+            setVar1("leaf");
+            setVar2("insect");
+            setVar3("animal");
+            setVar4("mushroom");
+        }
+
+        if( getVar1() == "empty" && getVar2() == "empty" && getVar3() == null && getVar4() == null){
+            setVar1("insect");
+            setVar2("mushroom");
+            setVar3("leaf");
+            setVar4("animal");
+        }
+
+        if( getVar1() == "empty" && getVar2() == "empty" && getVar3() == null && getVar4() == null){
+            setVar1("mushroom");
+            setVar2("animal");
+            setVar3("leaf");
+            setVar4("insect");
+        }
+
+        return new StringBuilder()
+                .append("┌---┐-----------------┌---┐\n")
+                .append("| " + makeCode(getVar1()) + "|                 | " +makeCode(getVar2()) + "|\n")
+                .append("└---┘                 └---┘\n")
+                .append("|                         |\n")
+                .append("|                         |\n")
+                .append("|                         |\n")
+                .append("┌---┐                 ┌---┐\n")
+                .append("| " + makeCode(getVar3()) + "|                 | " + makeCode(getVar4()) + "|\n")
+                .append("└---┘-----------------└---┘\n")
+                .toString();
+    }
+
     public String toString() {
-        return "GoldFront{" +
-                "var1=" + getVar1() +
-                ", var2=" + getVar2() +
-                ", var3=" + getVar3() +
-                ", var4=" + getVar4() +
-                ", startResources=" + Arrays.toString(startResources) +
-                '}';
+        return constructPrettyPrint();
     }
 
 }

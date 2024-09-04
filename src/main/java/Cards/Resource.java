@@ -82,10 +82,6 @@ public class Resource implements Cards {
     public static String makeCode(Object var) {
         String unicode = "  ";
 
-        if(var.equals("empty")){
-            unicode = "  ";
-            return unicode;
-        }
         if (var.equals("leaf")) {
             unicode = "\uD83C\uDF43";
             return unicode;
@@ -115,9 +111,15 @@ public class Resource implements Cards {
             return unicode;
         }
 
-
-
         return unicode;
+    }
+
+    public void getBackCard(){
+        var1 = "empty";
+        var2 = "empty";
+        var3 = "empty";
+        var4 = "empty";
+
     }
 
     protected String constructPrettyPrint() {
@@ -138,9 +140,37 @@ public class Resource implements Cards {
         System.out.print(constructPrettyPrint());
     }
 
+    public String printBackFront(Cards card){
+        StringBuilder backfront = new StringBuilder();
+
+        String[] prettyLines = card.getPrettyPrint().split("\n");
+
+        backfront.append("Front:                          ").append("Back:\n");
+        backfront.append(prettyLines[0]).append("     ┌---┐-----------------┌---┐\n");
+        backfront.append(prettyLines[1]).append("     |   |                 |   |\n");
+        backfront.append(prettyLines[2]).append("     └---┘                 └---┘\n");
+        backfront.append(prettyLines[3]).append("     |          ┌---┐          |\n");
+        backfront.append(prettyLines[4]).append("     |          | " + makeCode(getKingdom()) + "|          |\n");
+        backfront.append(prettyLines[5]).append("     |          └---┘          |\n");
+        backfront.append(prettyLines[6]).append("     ┌---┐                 ┌---┐\n");
+        backfront.append(prettyLines[7]).append("     |   |                 |   |\n");
+        backfront.append(prettyLines[8]).append("     └---┘-----------------└---┘\n");
+
+        return backfront.toString();
+    }
+
 
     // Method to get the type of the card, to be overwritten in subclasses
     public String getType() {
         return "resource";
     }
+
+
+
+    @Override
+    public String getPrettyPrint() { 
+        return constructPrettyPrint(); 
+    }
+
+
 }

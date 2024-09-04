@@ -1,16 +1,19 @@
 package Board;
 
+import Cards.GoldFront;
+import Cards.Objective;
+import Cards.ResourceFront;
+import Deck.GoldDeck;
+import Deck.ObjectiveDeck;
+import Deck.ResourceDeck;
+
 import java.util.ArrayList;
 import java.util.List;
-import Deck.GoldDeck;
-import Deck.ResourceDeck;
-import Deck.ObjectiveDeck;
-import Cards.GoldFront;
-import Cards.ResourceFront;
-import Cards.Objective;
 
 public class ScoreBoard {
     private List<Player> players;
+
+    int points;
 
     public ScoreBoard() {
         players = new ArrayList<>();
@@ -35,6 +38,7 @@ public class ScoreBoard {
             return false;
         }
     }
+
 
     public void distributeGoldCards(GoldDeck goldDeck) {
         List<GoldFront> goldCards = goldDeck.getAllGoldCards();
@@ -119,23 +123,5 @@ public class ScoreBoard {
         return sb.toString();
     }
 
-    public static void main(String[] args) {
-        ScoreBoard scoreBoard = new ScoreBoard();
-        Player player1 = new Player("Pio");
-        Player player2 = new Player("Saad");
-        Player player3 = new Player("David");
-        Player player4 = new Player("Emma");
-
-        player1.setScore(0);
-        player2.setScore(0);
-        player3.setScore(0);
-        player4.setScore(0);
-
-        scoreBoard.addPlayer(player1);
-        scoreBoard.addPlayer(player2);
-        scoreBoard.addPlayer(player3);
-        scoreBoard.addPlayer(player4);
-
-        System.out.println(scoreBoard);
-    }
+    public static void main(String[] args) {}
 }

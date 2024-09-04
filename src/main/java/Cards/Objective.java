@@ -239,4 +239,14 @@ public class Objective implements Cards {
     public void prettyPrint() {
         System.out.print(constructPrettyPrint());
     }
+
+    public String printBackFront(Cards card){ return constructPrettyPrint(); }
+    
+    
+    @Override
+    public String getPrettyPrint() { 
+        return constructPrettyPrint(); 
+    }
+
+
 }

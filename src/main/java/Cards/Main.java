@@ -1,5 +1,7 @@
 package Cards;
 
+// import Client.Menu;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -36,12 +38,20 @@ public class Main {
         //GoldFront goldi1 = new GoldFront("animal", "empty", "mushroom", "leaf", "leaf", 2, "bottle", new String[]{"leaf", "leaf","leaf", "animal"});
         //goldi1.prettyPrint();
 
-        ResourceFront front = new ResourceFront("leaf", "leaf", "leaf", "leaf", "leaf", 1);
-        front.prettyPrint();
+        //ResourceFront front = new ResourceFront("leaf", "leaf", "leaf", "leaf", "leaf", 1);
+        //front.printFrontBack();
+        //front.prettyPrint();
 
-        // StarterFront starter = new StarterFront("empty", "empty", null, null, new String[]{"leaf", "animal", "mushroom" });
+        //StarterFront starter = new StarterFront("empty", "empty", null, null, new String[]{"leaf", "animal", "mushroom" });
+        //starter.printFrontBack();
         //Objective obi = new Objective(3, "vertical pattern", new String[]{"animal", "feather"}, null);
         //obi.prettyPrint();
+
+        GoldFront card = new GoldFront("animal", "empty", "mushroom", "leaf", "leaf", 2, "bottle", new String[]{"leaf", "leaf","leaf", "animal"});
+        card.printFrontBack();
+
+        // System.out.println(Menu.CodexNaturalis);
+        // System.out.println(Menu.choice);
         
     }
 }

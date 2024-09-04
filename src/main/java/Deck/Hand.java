@@ -16,6 +16,10 @@ public class Hand {
         cards.add(card);
     }
 
+    public void replaceCard(Cards card, int index){ cards.add(index, card);}
+
+    public void removeCard(int index){ cards.remove(index); }
+
 
     public void shuffleCards() {
         Collections.shuffle(cards);
@@ -23,11 +27,19 @@ public class Hand {
 
     public boolean playCard(int index) {
         if (index >= 0 && index < cards.size()) {
-            cards.remove(index);
+            cards.remove(index -1);
             System.out.println("Card at index " + index + " played.");
             return true;
         } else {
             return false;
+        }
+    }
+
+    public Cards getCard(int index) {
+        if (index >= 0 && index < cards.size()+1) {
+            return cards.get(index-1);
+        } else {
+            throw new IndexOutOfBoundsException("Invalid card index: " + index);
         }
     }
 
@@ -39,18 +51,25 @@ public class Hand {
         return cardTypes;
     }
 
-    public void printHand() {
+    public String printHand() {
+        StringBuilder sb = new StringBuilder();
         for (int i = 1; i < cards.size() + 1; i++) {
-            System.out.println("Card " + i + ":");
+            sb.append("Card ").append(i).append(":\n");
             String cardType = getCardTypes().get(i - 1);
             if (!cardType.equals("Gold") && !cardType.equals("Resource")) {
                 cardType = "Objective";
             }
-            System.out.println("Card Type: " + cardType);
-            cards.get(i - 1).prettyPrint();
-            System.out.println("\n");
+            if(cardType == "Objective"){
+                sb.append("Card Type: ").append(cardType).append("\n");
+                sb.append(cards.get(i - 1).printBackFront(cards.get(i - 1))).append("\n\n");
+            }
+            else {
+                sb.append("Card Type: ").append(cardType).append("     Kingdom: ").append(cards.get(i - 1).getKingdom()).append("\n");
+                sb.append(cards.get(i - 1).printBackFront(cards.get(i - 1))).append("\n\n");
+            }
         }
-        System.out.println("Number of cards in Hand: " + getHandCount());
+        sb.append("Number of cards in Hand: ").append(getHandCount()).append("\n");
+        return sb.toString();
     }
     
     public int getHandCount() {
